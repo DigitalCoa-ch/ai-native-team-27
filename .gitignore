@@ -34,3 +34,5 @@ next-env.d.tsnode_modules/
 .next/
 .next/
 node_modules/
+code-builder/
+.openclaw/
