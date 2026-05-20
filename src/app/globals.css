@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #050508;
+  --surface: #0c0c14;
+  --border: #1a1a2e;
+  --text-primary: #f0f0f5;
+  --text-secondary: #8888aa;
+  --accent: #ff6b00;
+  --accent-glow: rgba(255, 107, 0, 0.4);
+  --success: #00ff88;
+  --warning: #ffd000;
+  --danger: #ff3344;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Grid background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Scan line effect */
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3), transparent);
+  animation: scanLine 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Radar sweep */
+.radar-sweep {
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 107, 0, 0.15) 30deg, transparent 60deg);
+  animation: radar 4s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes radar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Glow effects */
+.glow-orange {
+  box-shadow: 0 0 40px rgba(255, 107, 0, 0.1);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px rgba(255, 51, 68, 0.08);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 30px rgba(255, 208, 0, 0.08);
+}
+
+.glow-green {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.08);
+}
+
+/* Card base */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 107, 0, 0.2);
+}
+
+/* Badge styles */
+.badge-high {
+  background: rgba(255, 51, 68, 0.15);
+  color: #ff3344;
+  border: 1px solid rgba(255, 51, 68, 0.3);
+}
+
+.badge-medium {
+  background: rgba(255, 208, 0, 0.15);
+  color: #ffd000;
+  border: 1px solid rgba(255, 208, 0, 0.3);
+}
+
+.badge-low {
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b00 0%, #ff8534 100%);
+  color: #000;
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ff8534 0%, #ffa040 100%);
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Focus states */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 107, 0, 0.3);
+  color: white;
+}
